@@ -7,7 +7,7 @@
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-
+#from matplotlib.colors import Normalize
 
 def Teq(x1, x2):
     Teq1 = b11/(1.0+np.exp(b12-b13*x1))+b14
@@ -32,8 +32,9 @@ def Teq(x1, x2):
 #    plt.colorbar(CT, location='right', label='Tree Cover fraction', ticks=[0, 0.25, 0.5, 0.75, 1])
 #
 
-version=2
-
+version=1
+tag='_N3000'
+#cmax=0.9
 
 ## old
 #b11, b12, b13, b14 = 0.88, 5, 16, 0.05   # Teq1
@@ -61,7 +62,7 @@ X1v, X2v = np.meshgrid(X1, X2)
 TEQ, TEQ1, TEQ2 = Teq(X1v, X2v)
 
 # Make data for Teq vs variable (normal)
-N = 2000
+N = 3000
 #meanX1, stdX1 = 0.5, 0.3
 #meanX2, stdX2 = 0.5, 0.3
 
@@ -83,19 +84,23 @@ dpi=500
 plt.figure(figsize=(4,3), constrained_layout=True)
 fontsize=11
 levels = np.linspace(0,1,51)
+#norm = Normalize(vmin=0, vmax=cmax)
+
 #CT=ax.contourf(X1v, X2v, TEQ, 20) # old
-CT=plt.contourf(X1v, X2v, TEQ, levels=levels)
+#CT=plt.contourf(X1v, X2v, TEQ, levels=levels, cmap='viridis', norm=norm)
+CT=plt.contourf(X1v, X2v, TEQ, levels=levels, cmap='viridis')
 plt.scatter(dataX1, dataX2, s=1, color='black')
 plt.xlabel('$x_1$', fontsize=fontsize)
 plt.ylabel('$x_2$', fontsize=fontsize)
 plt.xticks([-1, -0.5, 0, 0.5, 1])
 plt.yticks([-1, -0.5, 0, 0.5, 1])
-#ax.set_xlim(0,1)
-#ax.set_ylim(0,1)
 plt.xlim(-1,1)
 plt.ylim(-1,1)
-plt.colorbar(CT, location='right', label='Tree Cover fraction', ticks=[0, 0.25, 0.5, 0.75, 1])
-plt.savefig('../Figures/Results_Model1_Sigm_Color'+str(version)+'.png', dpi=dpi)
+plt.colorbar(CT, location='right', label='Tree cover fraction', ticks=[0, 0.25, 0.5, 0.75, 1])
+#plt.colorbar(CT, location='right', label='Tree Cover fraction', ticks=np.linspace(0, cmax, 10))
+##cbar=plt.colorbar(CT, location='right', label='Tree Cover fraction')
+##CT.set_clim(0, cmax)
+plt.savefig('../Figures/Results_Model1_Sigm_Color'+str(version)+tag+'.png', dpi=dpi)
 plt.show()
 
 #Figures/Results_Model1_Sigm_Color2.png
@@ -116,18 +121,18 @@ plt.ylabel('Tree cover fraction', fontsize=12)
 plt.legend(loc='lower right')
 plt.ylim(-0.05, 1.05)
 plt.yticks([0, 0.25, 0.5, 0.75, 1])
-plt.savefig('../Figures/Results_Model1_Sigm_Curve'+str(version)+'.png', dpi=dpi)
+plt.savefig('../Figures/Results_Model1_Sigm_Curve'+str(version)+tag+'.png', dpi=dpi)
 plt.show()
 
 # Tree cover distribution w/ kde
 fig = plt.figure(figsize=(4,3), constrained_layout=True)
 sns.histplot(dataTEQ, kde=True, color='black', bins=20, fill=True, element="step", edgecolor=None)
 plt.xlim(0,1)
-plt.ylim(0,300)
+plt.ylim(0,500)
 plt.xlabel('Tree cover fraction', fontsize=12)
 plt.ylabel('Frequency', fontsize=12)
 plt.xticks([0, 0.25, 0.5, 0.75, 1])
 #plt.tight_layout()
-plt.savefig('../Figures/Results_Model1_Sigm_Dist'+str(version)+'.png', dpi=dpi)
+plt.savefig('../Figures/Results_Model1_Sigm_Dist'+str(version)+tag+'.png', dpi=dpi)
 plt.show()
 
