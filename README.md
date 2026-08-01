@@ -46,36 +46,11 @@ pip install numpy scipy pandas matplotlib seaborn netcdf4 cartopy
 
 ---
 
-## 🚀 Usage
-
-### 1. Run Simple Monostable Model (Model 1)
-```bash
-python model1.py
-```
-
-### 2. Run Extended Good's Model (Model 2)
-```bash
-python model2.py
-```
-
-### 3. Run Dynamic Mortality Sensitivity Simulations
-```bash
-python Supplementary_file.py
-```
-
-### 4. Observational & LPJmL Data Analysis
-To generate observational maps, scatterplots, and distributions:
-```bash
-python data_observations_EunJoo.py
-python data_observations_maps_Sebastian.py
-python LPJ_distributions.py
-```
-
----
-
 ## 📜 Citation
 
 If you use this code or model framework in your research, please cite the original paper:
 
-> **"Multiple modes in tropical tree cover and alternative vegetation states: a multi-dimensional perspective"**
+> Bathiany, S., Kim, E. J., & Boers, N. (2025). **Multiple modes in tropical tree cover and alternative vegetation states: a multi-dimensional perspective**. Environmental Research Letters.
+
+[https://doi.org/10.1088/1748-9326/adf7c2](https://doi.org/10.1088/1748-9326/adf7c2)
 
