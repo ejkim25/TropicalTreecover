@@ -54,3 +54,5 @@ If you use this code or model framework in your research, please cite the origin
 
 [https://doi.org/10.1088/1748-9326/adf7c2](https://doi.org/10.1088/1748-9326/adf7c2)
 
+## DOI of the code
+DOI: 10.5281/zenodo.17592348 
